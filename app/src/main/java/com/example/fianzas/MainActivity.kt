@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.BtnIniciar.setOnClickListener {
+        binding.BtnInicio.setOnClickListener {
             startActivity(Intent(this@MainActivity, Splash::class.java))
         }
     }
