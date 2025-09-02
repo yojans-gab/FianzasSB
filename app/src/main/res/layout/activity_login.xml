@@ -79,7 +79,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/Btn_iniciar"
+                android:id="@+id/Btn_login"
                 android:text="iniciar sesión"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"

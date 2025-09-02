@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1027253306100",
+    "project_id": "fianzas-bc66f",
+    "storage_bucket": "fianzas-bc66f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027253306100:android:62bb9884fdb7417d9954a1",
+        "android_client_info": {
+          "package_name": "com.example.fianzas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4UW7Cuttg5skWo22fFB38mR0aceFNYik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Fianzas</string>
+
+    <string-array name="roles">
+        <item>Administrador</item>
+        <item>Gestor</item>
+    </string-array>
 </resources>

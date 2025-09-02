@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.fianzas.Administrador.RegistrarUsuario
 import com.example.fianzas.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
