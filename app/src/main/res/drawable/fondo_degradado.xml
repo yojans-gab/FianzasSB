@@ -1,6 +1,22 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient
-        android:startColor="#000"
-        android:endColor="#FFFF"
-        android:angle="45"/>
-</shape>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fondo con gradiente -->
+    <item>
+        <shape>
+            <gradient
+                android:startColor="#0D47A1"
+                android:endColor="#FFFFFF"
+                android:angle="45"
+                android:type="linear"/>
+        </shape>
+    </item>
+
+
+    <item>
+        <bitmap
+            android:src="@drawable/logo_empresa"
+        android:gravity="fill"
+        android:alpha="0.15"/>
+    </item>
+
+</layer-list>
