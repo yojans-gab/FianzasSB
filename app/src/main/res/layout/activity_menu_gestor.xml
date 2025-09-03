@@ -1,17 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:orientation="vertical"
+    android:background="@drawable/background_menu_gestor"
+    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Gestor.MenuGestor">
+    android:layout_height="match_parent">
 
+    <TextView
+        android:text="Menú Principal"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="#000"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp" />
+
+    <!-- Contenedor de opciones -->
+    <GridLayout
+        android:columnCount="2"
+        android:rowCount="2"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Crear Finanzas -->
+        <LinearLayout
+            android:id="@+id/card_crear_finanzas"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/estilo_menu_gestor"
+            android:layout_margin="8dp"
+            android:padding="20dp"
+            android:elevation="6dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/ic_finanzas"
+                android:contentDescription="Crear Finanzas" />
+
+            <TextView
+                android:text="Crear Finanzas"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Ver Finanzas -->
+        <LinearLayout
+            android:id="@+id/card_ver_finanzas"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/estilo_menu_gestor"
+            android:layout_margin="8dp"
+            android:padding="20dp"
+            android:elevation="6dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/ic_ver_fianzas"
+                android:contentDescription="Ver Finanzas" />
+
+            <TextView
+                android:text="Ver Finanzas"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Notificaciones -->
+        <LinearLayout
+            android:id="@+id/card_notificaciones"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/estilo_menu_gestor"
+            android:layout_margin="8dp"
+            android:padding="20dp"
+            android:elevation="6dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/ic_notificaciones"
+                android:contentDescription="Notificaciones" />
+
+            <TextView
+                android:text="Notificaciones"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Cuenta -->
+        <LinearLayout
+            android:id="@+id/card_cuenta"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/estilo_menu_gestor"
+            android:layout_margin="8dp"
+            android:padding="20dp"
+            android:elevation="6dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/ic_cuenta"
+                android:contentDescription="Cuenta" />
+
+            <TextView
+                android:text="Cuenta"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </GridLayout>
+
+    <!-- Botón de Cerrar Sesión Gestor -->
     <Button
         android:id="@+id/CerrarSesionGestor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cerrar Sesión Gestor"
-        android:layout_marginTop="40dp"/>
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="30dp" />
 
-</RelativeLayout>
+</LinearLayout>
