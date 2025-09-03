@@ -1,18 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Administrador.MenuAdministrador">
+    android:layout_height="match_parent">
 
+    <TextView
+        android:text="Menú Principal"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="#000"
+        android:textColor="#FFFFFF"
+        android:padding="16dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp" />
 
+    <!-- Contenedor de opciones -->
+    <GridLayout
+        android:columnCount="2"
+        android:rowCount="2"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Registrar Usuario -->
+        <LinearLayout
+            android:id="@+id/card_registrar_usuario"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_style"
+            android:layout_margin="8dp"
+            android:padding="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/icono_registrar_usuario"
+                android:contentDescription="Registrar Usuario" />
+
+            <TextView
+                android:text="Registrar Usuario"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Usuarios -->
+        <LinearLayout
+            android:id="@+id/card_usuarios"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_style"
+            android:layout_margin="8dp"
+            android:padding="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/icono_usuarios"
+                android:contentDescription="Usuarios" />
+
+            <TextView
+                android:text="Usuarios"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Registrar Empresa -->
+        <LinearLayout
+            android:id="@+id/card_registrar_empresa"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_style"
+            android:layout_margin="8dp"
+            android:padding="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/icono_registrar_empresa"
+                android:contentDescription="Registrar Empresa" />
+
+            <TextView
+                android:text="Registrar Empresa"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Empresa -->
+        <LinearLayout
+            android:id="@+id/card_empresa"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/card_style"
+            android:layout_margin="8dp"
+            android:padding="20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:srcCompat="@drawable/icono_empresa"
+                android:contentDescription="Empresa" />
+
+            <TextView
+                android:text="Empresa"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </GridLayout>
+
+    <!-- Botón de Cerrar Sesión -->
     <Button
         android:id="@+id/CerrarSesionAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#000000"
         android:text="Cerrar Sesión"
-        android:layout_marginTop="40dp"/>
+        android:textColor="#FFFFFF" />
 
-</RelativeLayout>
+</LinearLayout>
