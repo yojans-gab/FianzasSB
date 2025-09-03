@@ -1,0 +1,24 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Fondo con gradiente -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#0D47A1"
+                android:endColor="#FFFFFF"
+                android:angle="45"
+                android:type="linear"/>
+        </shape>
+    </item>
+
+    <!-- Logo semi-transparente -->
+    <item>
+        <bitmap
+            android:src="@drawable/logoe"
+            android:gravity="center"
+            android:tileMode="disabled"
+            android:scaleType="fitXY"
+            android:alpha="0.15"/>
+    </item>
+
+</layer-list>
