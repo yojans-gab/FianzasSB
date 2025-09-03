@@ -11,9 +11,9 @@
 
     <ImageView
         android:id="@+id/ImgUsuario"
-        android:layout_width="120dp"
-        android:layout_height="117dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="26dp"
         android:contentDescription="Icono de usuario"
         android:src="@drawable/imgusuariologin" />
 

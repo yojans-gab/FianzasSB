@@ -14,7 +14,7 @@
 
     <item>
         <bitmap
-            android:src="@drawable/logo_empresa"
+            android:src="@drawable/logoe"
         android:gravity="fill"
         android:alpha="0.15"/>
     </item>
