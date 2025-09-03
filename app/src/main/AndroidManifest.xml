@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fianzas">
         <activity
+            android:name=".Administrador.Usuarios"
+            android:exported="false" />
+        <activity
             android:name=".Gestor.MenuGestor"
             android:exported="false" />
         <activity
