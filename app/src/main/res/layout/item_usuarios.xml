@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:contentPadding="10dp"
     app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
     app:cardElevation="0dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat

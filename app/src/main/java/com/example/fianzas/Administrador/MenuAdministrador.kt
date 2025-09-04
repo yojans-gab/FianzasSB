@@ -37,6 +37,12 @@ class MenuAdministrador : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.cardUsuarios.setOnClickListener {
+            val intent = Intent(this, Usuarios::class.java)
+            startActivity(intent)
+        }
+
+
     }
 
     private fun ComprobarSesion() {

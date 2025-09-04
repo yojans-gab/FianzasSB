@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.fianzas.Administrador.MenuAdministrador
+import com.example.fianzas.Administrador.RegistrarUsuario
 import com.example.fianzas.Gestor.MenuGestor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -39,6 +40,10 @@ class Splash : AppCompatActivity() {
         }.start()
     }
 
+    fun prueva(){
+        startActivity(Intent(this, RegistrarUsuario::class.java))
+        finishAffinity()
+    }
     fun ComprobarSesion(){
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null){
