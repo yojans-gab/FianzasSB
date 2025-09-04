@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fianzas">
         <activity
+            android:name=".Gestor.RegistrarFianza"
+            android:exported="false" />
+        <activity
+            android:name=".Administrador.RegistrarEmpresa"
+            android:exported="false" />
+        <activity
             android:name=".Administrador.EditarUsuarioActivity"
             android:exported="false" />
         <activity
