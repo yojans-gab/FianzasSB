@@ -5,76 +5,108 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_gradiente_moderno"
     tools:context=".Administrador.EditarUsuarioActivity">
 
-    <TextView
-        android:id="@+id/tvTituloEditar"
-        android:layout_width="wrap_content"
+    <!-- estilo login -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFormulario"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Editar Usuario"
-        android:textAppearance="?attr/textAppearanceHeadline5"
+        android:layout_margin="32dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@color/blanco"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilNombreUsuario"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Nombre del Usuario"
-        app:layout_constraintTop_toBottomOf="@id/tvTituloEditar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etNombreUsuarioEditar"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="28dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilCorreoUsuario"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Correo del Usuario (No editable)"
-        app:layout_constraintTop_toBottomOf="@id/tilNombreUsuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilRolUsuario"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Rol del Usuario"
-        app:layout_constraintTop_toBottomOf="@id/tilCorreoUsuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <AutoCompleteTextView
-            android:id="@+id/actvRolUsuarioEditar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <!-- Icono circular arriba -->
+            <ImageView
+                android:id="@+id/ivUsuarioIcono"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/ic_person"
+                android:background="@drawable/fondo_icono_circular"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp" />
 
 
-    <Button
-        android:id="@+id/btnGuardarCambios"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Guardar Cambios"
-        app:layout_constraintTop_toBottomOf="@id/tilRolUsuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Campo Nombre -->
+            <TextView
+                android:id="@+id/tvTituloEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Editar Usuarios"
+                android:textColor="@color/gris_oscuro"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombreUsuario"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del Usuario"
+                app:startIconDrawable="@drawable/ic_person"
+                app:boxStrokeColor="@color/azul_principal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNombreUsuarioEditar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/gris_texto"
+                    android:fontFamily="sans-serif-light" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo Rol -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRolUsuario"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Rol del Usuario"
+                app:startIconDrawable="@drawable/ic_security"
+                app:boxStrokeColor="@color/azul_principal">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvRolUsuarioEditar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:textColor="@color/gris_texto"
+                    android:fontFamily="sans-serif-light" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Botón -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGuardarCambios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Guardar Cambios"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/blanco"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/boton_editar_usuario"
+                app:cornerRadius="20dp"
+                app:backgroundTint="@null"/>
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

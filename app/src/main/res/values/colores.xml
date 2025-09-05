@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores principales -->
+    <color name="azul_principal">#2196F3</color> <!-- Azul moderno -->
+    <color name="blanco">#FFFFFF</color>
+    <color name="blanco_tarjeta">#FAFAFA</color>
+
+    <!-- Tonos de gris -->
+    <color name="gris_texto">#757575</color>   <!-- Gris medio para inputs -->
+    <color name="gris_oscuro">#333333</color> <!-- Gris oscuro para títulos -->
+
+    <!-- Colores degradados -->
+    <color name="gradiente_inicio">#D6EAF8</color> <!-- Azul pastel claro -->
+    <color name="gradiente_fin">#AED6F1</color>    <!-- Celeste pastel -->
+
+    <!-- Para ripple y efectos -->
+    <color name="azul_ripple">#1E88E5</color>
+</resources>
