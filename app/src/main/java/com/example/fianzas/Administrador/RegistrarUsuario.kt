@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.OnBackPressedDispatcher
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
@@ -42,6 +43,10 @@ class RegistrarUsuario : AppCompatActivity() {
 
         binding.BtnRegistrarAdmin.setOnClickListener {
             ValidarInformacion()
+        }
+
+        binding.btnBack.setOnClickListener {
+            OnBackPressedDispatcher().onBackPressed()
         }
 
     }

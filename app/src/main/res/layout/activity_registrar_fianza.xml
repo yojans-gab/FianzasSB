@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,4 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".Gestor.RegistrarFianza">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/Tv_Empresa"
+        android:hint="Empresa"
+        app:drawableEndCompat="@drawable/ic_abajo"
+        android:drawablePadding="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center_vertical"
+        android:textColor="#000"
+        android:background="@drawable/forma_edittex"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/Tv_tipo"
+        android:hint="Tipo de Fianza"
+        app:drawableEndCompat="@drawable/ic_abajo"
+        android:drawablePadding="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/Tv_Empresa"
+        android:layout_gravity="center_vertical"
+        android:textColor="#000"
+        android:background="@drawable/forma_edittex"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
