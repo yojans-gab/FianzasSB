@@ -114,10 +114,10 @@ class RegistrarEmpresa : AppCompatActivity() {
             .addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Empresa registrada exitosamente!", Toast.LENGTH_SHORT).show()
-                binding.EtNombreEmpresa.text.clear()
-                binding.EtNombreDueno.text.clear()
-                binding.EtCorreoEmpresa.text.clear()
-                binding.EtTelefono.text.clear()
+                binding.EtNombreEmpresa.setText("")
+                binding.EtNombreDueno.setText("")
+                binding.EtCorreoEmpresa.setText("")
+                binding.EtTelefono.setText("")
                 // ...
                 startActivity(Intent(this@RegistrarEmpresa, MenuAdministrador::class.java))
                 finishAffinity()
