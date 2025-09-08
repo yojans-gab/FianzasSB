@@ -47,6 +47,10 @@ class MenuAdministrador : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.cardEmpresa.setOnClickListener {
+            val intent = Intent(this, Empresas::class.java)
+            startActivity(intent)
+        }
 
     }
 
