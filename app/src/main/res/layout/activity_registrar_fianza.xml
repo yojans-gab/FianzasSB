@@ -7,35 +7,233 @@
     android:layout_height="match_parent"
     tools:context=".Gestor.RegistrarFianza">
 
-    <TextView
-        android:id="@+id/Tv_Empresa"
-        android:hint="Empresa"
-        app:drawableEndCompat="@drawable/ic_abajo"
-        android:drawablePadding="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center_vertical"
-        android:textColor="#000"
-        android:background="@drawable/forma_edittex"
-        android:padding="10dp"
+    <!--Toolbar-->
+    <RelativeLayout
+        android:id="@+id/toolbarRLAgregarPDF"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="30dp">
 
-    <TextView
-        android:id="@+id/Tv_tipo"
-        android:hint="Tipo de Fianza"
-        app:drawableEndCompat="@drawable/ic_abajo"
-        android:drawablePadding="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/Tv_Empresa"
-        android:layout_gravity="center_vertical"
-        android:textColor="#000"
-        android:background="@drawable/forma_edittex"
-        android:padding="10dp"
+        <TextView
+            android:id="@+id/Txt_agregar_libro"
+            android:text="Registrar Fianza"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/dividerHorizontal"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarRLAgregarPDF">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Selección de Empresa (Asumiendo que es un AutoCompleteTextView o similar) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmpresa"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Empresa"
+                android:layout_marginBottom="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvEmpresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:padding="12dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Tipo de Fianza (Asumiendo que es un AutoCompleteTextView o similar) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTipoFianza"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tipo de Fianza"
+                android:layout_marginBottom="8dp">
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvTipoFianza"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:padding="12dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <!-- Fecha de Emisión con Ícono de Calendario -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFechaEmision"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de Emisión"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_calendario"
+                app:endIconContentDescription="Seleccionar Fecha de Emisión"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFechaEmision"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:longClickable="false"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Fecha de Vencimiento con Ícono de Calendario -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFechaVencimiento"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de Vencimiento"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_calendario"
+                app:endIconContentDescription="Seleccionar Fecha de Vencimiento"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFechaVencimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:longClickable="false"
+                    android:padding="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- NOG -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNOG"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NOG"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNOG"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapCharacters"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Otros campos como Fiador (se podría autocompletar), Beneficiario, Nombre Proyecto, Monto, Fecha Notificación -->
+            <!-- ... (Añade aquí el resto de tus TextInputLayouts y EditTexts para los demás campos de la fianza) ... -->
+            <!-- Ejemplo para Fiador (podría ser no editable y llenarse al seleccionar empresa) -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFiador"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fiador"
+                android:layout_marginBottom="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFiador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:focusable="false"
+                    android:padding="14dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBenificiario"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Beneficiario"
+                android:layout_marginBottom="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBenificiario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Monto -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilNombreProyecto"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del Proyecto"
+                android:layout_marginBottom="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etnNombreProyecto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Monto -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMonto"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Monto"
+                android:layout_marginBottom="8dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMonto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- Fecha de Emisión con Ícono de Calendario -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFechaNotificacion"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Fecha de Notificación"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_calendario"
+                app:endIconContentDescription="Seleccionar Fecha de Emisión"
+                android:layout_marginBottom="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etFechaNotificacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:longClickable="false"
+                    android:padding="12dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Botón Subir/Guardar Fianza -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGuardarFianza"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Guardar Fianza"
+                android:padding="12dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
