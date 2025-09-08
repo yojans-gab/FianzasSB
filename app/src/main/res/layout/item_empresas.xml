@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:contentPadding="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="0dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <!-- Contenedor para la imagen, nombre, correo y rol -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1">
+
+            <!-- Foto del Usuario (ImageView Circular) -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivFotoEmpresa"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                tools:srcCompat="@tools:sample/avatars" /> <!-- Placeholder, usa tu imagen por defecto -->
+
+            <!-- Nombre del Usuario -->
+            <TextView
+                android:id="@+id/tvNombreEmpresa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Nombre de a Empresa"
+                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivFotoEmpresa"
+                app:layout_constraintTop_toTopOf="@id/ivFotoEmpresa" />
+
+            <!-- Correo del Usuario -->
+            <TextView
+                android:id="@+id/tvNombreDueno"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Dueño"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tvNombreEmpresa"
+                app:layout_constraintTop_toBottomOf="@id/tvNombreEmpresa" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Contenedor para los botones (opcional, para agruparlos visualmente si es necesario) -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!-- Botón Editar Usuario -->
+            <ImageButton
+                android:id="@+id/btnEditarEmpresa"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Editar Usuario"
+                android:padding="8dp"
+                android:src="@drawable/ic_edit" />
+
+            <!-- Botón Eliminar Usuario -->
+            <ImageButton
+                android:id="@+id/btnEliminarEmpresa"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Eliminar Usuario"
+                android:padding="8dp"
+                android:src="@drawable/ic_eliminar_cat" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</com.google.android.material.card.MaterialCardView>
