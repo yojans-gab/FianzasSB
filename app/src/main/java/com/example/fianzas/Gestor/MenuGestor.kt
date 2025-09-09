@@ -33,6 +33,10 @@ class MenuGestor : AppCompatActivity() {
         binding.cardCrearFinanzas.setOnClickListener {
             startActivity(Intent(this, RegistrarFianza::class.java))
         }
+        binding.cardVerFinanzas.setOnClickListener {
+            startActivity(Intent(this, Fianzas::class.java))
+        }
+
 
 
     }

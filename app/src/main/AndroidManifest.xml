@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fianzas">
         <activity
+            android:name=".Gestor.Fianzas"
+            android:exported="false" />
+        <activity
             android:name=".Administrador.Empresas"
             android:exported="false" />
         <activity
