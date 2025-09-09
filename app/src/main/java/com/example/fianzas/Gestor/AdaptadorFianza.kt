@@ -1,12 +1,15 @@
 package com.example.fianzas.Gestor
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fianzas.Administrador.EditarEmpresa
+import com.example.fianzas.Administrador.EditarUsuarioActivity
 import com.example.fianzas.databinding.ItemFianzasBinding
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
@@ -41,7 +44,9 @@ class AdaptadorFianza(
             popup.setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     1 -> {
-                        Toast.makeText(mContext, "Editar: ${modelo.nog}", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(mContext, EditarFianza::class.java)
+                        intent.putExtra("Fianza_Id", modelo.fianzaId)
+                        mContext.startActivity(intent)
                         true
                     }
                     2 -> {

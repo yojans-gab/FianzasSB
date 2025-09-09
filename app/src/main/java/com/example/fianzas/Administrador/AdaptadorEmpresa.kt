@@ -1,6 +1,7 @@
 package com.example.fianzas.Administrador
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -30,11 +31,13 @@ class AdaptadorEmpresa(
         holder.binding.tvNombreEmpresa.text = nombreEmpresa
         holder.binding.tvNombreDueno.text = nombreDueno
 
-        // Click editar (ejemplo)
+        // Click editar
         holder.binding.btnEditarEmpresa.setOnClickListener {
-            Toast.makeText(mContext, "Editar: $nombreEmpresa", Toast.LENGTH_SHORT).show()
-            // lanzar Activity editar si lo tienes
+            val intent = Intent(mContext, EditarEmpresa::class.java)
+            intent.putExtra("Empresa_Id", modelo.empresaId)
+            mContext.startActivity(intent)
         }
+
 
         // Click eliminar
         holder.binding.btnEliminarEmpresa.setOnClickListener {
