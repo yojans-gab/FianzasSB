@@ -25,8 +25,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:padding="28dp">
 
             <!-- Icono circular arriba -->
@@ -34,11 +34,10 @@
                 android:id="@+id/ivUsuarioIcono"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:src="@drawable/ic_person"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/fondo_icono_circular"
                 android:padding="16dp"
-                android:layout_marginBottom="16dp" />
-
+                android:src="@drawable/ic_person" />
 
 
             <!-- Campo Nombre -->
@@ -59,16 +58,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre del Usuario"
-                app:startIconDrawable="@drawable/ic_person"
-                app:boxStrokeColor="@color/azul_principal">
+                app:boxStrokeColor="@color/azul_principal"
+                app:startIconDrawable="@drawable/ic_person">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etNombreUsuarioEditar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
                     android:inputType="textPersonName"
-                    android:textColor="@color/gris_texto"
-                    android:fontFamily="sans-serif-light" />
+                    android:textColor="@color/gris_texto" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Campo Rol -->
@@ -79,16 +78,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:hint="Rol del Usuario"
-                app:startIconDrawable="@drawable/ic_security"
-                app:boxStrokeColor="@color/azul_principal">
+                app:boxStrokeColor="@color/azul_principal"
+                app:startIconDrawable="@drawable/ic_security">
 
                 <AutoCompleteTextView
                     android:id="@+id/actvRolUsuarioEditar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
                     android:inputType="none"
-                    android:textColor="@color/gris_texto"
-                    android:fontFamily="sans-serif-light" />
+                    android:textColor="@color/gris_texto" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Botón -->
@@ -97,14 +96,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:background="@drawable/boton_editar_usuario"
+                android:fontFamily="sans-serif-medium"
                 android:text="Guardar Cambios"
                 android:textAllCaps="false"
-                android:textSize="16sp"
                 android:textColor="@color/blanco"
-                android:fontFamily="sans-serif-medium"
-                android:background="@drawable/boton_editar_usuario"
-                app:cornerRadius="20dp"
-                app:backgroundTint="@null"/>
+                android:textSize="16sp"
+                app:backgroundTint="@null"
+                app:cornerRadius="20dp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
