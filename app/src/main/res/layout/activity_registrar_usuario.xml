@@ -8,7 +8,7 @@
     android:background="@drawable/fondo_gradiente_moderno"
     tools:context=".Administrador.RegistrarUsuario">
 
-    <!-- Contenedor con CardView (todo dentro del cuadro) -->
+    <!-- Contenedor con CardView -->
     <androidx.cardview.widget.CardView
         android:id="@+id/formCard"
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:orientation="vertical"
                 android:gravity="center_horizontal">
 
-                <!-- Imagen empresa -->
+                <!-- Imagen -->
                 <ImageView
                     android:id="@+id/imgEmpresa"
                     android:layout_width="80dp"
@@ -44,56 +44,38 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="Registrar Empresa"
+                    android:text="Registrar Usuario"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <!-- Campos del formulario -->
-                <!-- Nombre empresa -->
+                <!-- Nombre -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:hint="Nombre de la empresa"
-                    app:startIconDrawable="@drawable/ic_empresa">
+                    android:hint="Nombre"
+                    app:startIconDrawable="@drawable/ic_person">
 
                     <EditText
                         android:id="@+id/Et_nombres_admin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textCapWords"
+                        android:inputType="textPersonName|textCapWords"
                         android:textColor="#212121"
                         android:textColorHint="#757575" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Dueño -->
+                <!-- Correo electrónico -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Dueño"
-                    app:startIconDrawable="@drawable/ic_dueno">
-
-                    <EditText
-                        android:id="@+id/Et_email_admin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:textColor="#212121"
-                        android:textColorHint="#757575" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Correo -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="Correo"
+                    android:hint="Correo electrónico"
                     app:startIconDrawable="@drawable/ic_correo">
 
                     <EditText
-                        android:id="@+id/autoCompleteTextView"
+                        android:id="@+id/Et_email_admin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
@@ -101,19 +83,56 @@
                         android:textColorHint="#757575" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Teléfono -->
+                <!-- Rol -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Rol"
+                    app:startIconDrawable="@drawable/ic_rol">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:textColor="#212121"
+                        android:textColorHint="#757575" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Contraseña -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:hint="Teléfono"
-                    app:startIconDrawable="@drawable/ic_telefono">
+                    android:hint="Contraseña"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@drawable/ic_password">
 
                     <EditText
                         android:id="@+id/Et_password_admin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone"
+                        android:inputType="textPassword"
+                        android:textColor="#212121"
+                        android:textColorHint="#757575" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Repetir Contraseña -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:hint="Repita la contraseña"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@drawable/ic_password">
+
+                    <EditText
+                        android:id="@+id/Et_R_password_admin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
                         android:textColor="#212121"
                         android:textColorHint="#757575" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -125,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:backgroundTint="#1565C0"
-                    android:text="Guardar"
+                    android:text="Registrar"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     app:cornerRadius="12dp" />
