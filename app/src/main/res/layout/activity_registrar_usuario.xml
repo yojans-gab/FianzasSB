@@ -27,16 +27,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <!-- Imagen -->
                 <ImageView
                     android:id="@+id/imgEmpresa"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_person"
-                    android:layout_marginTop="10dp" />
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_person" />
 
                 <!-- Título -->
                 <TextView
@@ -159,8 +159,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="0dp"
         android:clickable="true"
         android:contentDescription="Regresar"
         android:focusable="true"
