@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:padding="12dp"/>
+                    android:padding="12dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Tipo de Fianza (Asumiendo que es un AutoCompleteTextView o similar) -->
@@ -133,7 +133,7 @@
                     android:id="@+id/etNOG"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapCharacters"
+                    android:inputType="number"
                     android:padding="12dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,7 +166,7 @@
                     android:id="@+id/etBenificiario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
+                    android:inputType="textCapWords|textNoSuggestions"
                     android:padding="12dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -182,7 +182,7 @@
                     android:id="@+id/etnNombreProyecto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
+                    android:inputType="textCapWords|textNoSuggestions"
                     android:padding="12dp" />
             </com.google.android.material.textfield.TextInputLayout>
 

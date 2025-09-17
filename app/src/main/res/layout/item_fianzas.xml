@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="119dp"
+        android:padding="16dp">
+
+        <!-- Logo de la Empresa -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivLogoEmpresaFianza"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium"
+            tools:srcCompat="@tools:sample/avatars"/> <!-- Placeholder para el logo -->
+
+        <!-- Tipo de Fianza (Título Principal) -->
+        <TextView
+            android:id="@+id/tvTipoFianzaItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/btnMenuFianza"
+            app:layout_constraintStart_toEndOf="@id/ivLogoEmpresaFianza"
+            app:layout_constraintTop_toTopOf="@id/ivLogoEmpresaFianza"
+            tools:text="Cumplimiento" />
+
+        <!-- Beneficiario -->
+
+        <TextView
+            android:id="@+id/tvBeneficiarioItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:textAppearance="?attr/textAppearanceBody2"
+            app:layout_constraintEnd_toEndOf="@id/tvTipoFianzaItem"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/tvTipoFianzaItem"
+            app:layout_constraintTop_toBottomOf="@id/tvTipoFianzaItem"
+            tools:text="Municipalidad de San Martin Jilotepeque Chimaltenango, Guatemala" />
+
+        <!-- Fecha de Emisión -->
+        <TextView
+            android:id="@+id/tvFechaEmisionItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            app:layout_constraintEnd_toStartOf="@id/guideline_vertical_dates"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivLogoEmpresaFianza"
+            tools:text="Emisión: 15/03/2023" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_dates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="200dp" />
+
+        <!-- Fecha de Vencimiento -->
+        <TextView
+            android:id="@+id/tvFechaVencimientoItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline_vertical_dates"
+            app:layout_constraintTop_toBottomOf="@id/ivLogoEmpresaFianza"
+            tools:text="Vence: 15/03/2024" />
+
+
+        <!-- Botón de Menú (para editar, eliminar, etc.) -->
+        <ImageButton
+            android:id="@+id/btnMenuFianza"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Opciones de fianza"
+            android:src="@drawable/ic_menu_puntos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorControlNormal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
