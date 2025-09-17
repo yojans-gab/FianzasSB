@@ -1,10 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Administrador.EditarEmpresa">
+    android:background="@drawable/fondo_gradiente_moderno"
+    tools:context=".Administrador.RegistrarEmpresa">
+
+    <!-- Tarjeta del formulario -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardFormularioEmpresa"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@color/blanco"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="28dp">
+
+            <!-- Icono de Empresa -->
+            <ImageView
+                android:id="@+id/ivIconoEmpresa"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/ic_empresa"
+                android:background="@drawable/fondo_icono_circular"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/tvTituloEditarEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Editar Empresa"
+                android:textColor="@color/gris_oscuro"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Campo Nombre de Empresa -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre de la empresa"
+                app:startIconDrawable="@drawable/ic_empresa"
+                app:boxStrokeColor="@color/azul_principal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Et_nombre_editar_empresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"
+                    android:textColor="@color/gris_texto"
+                    android:fontFamily="sans-serif-light" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo Dueño -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Dueño"
+                app:startIconDrawable="@drawable/ic_person"
+                app:boxStrokeColor="@color/azul_principal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Et_nombre_editar_dueno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"
+                    android:textColor="@color/gris_texto"
+                    android:fontFamily="sans-serif-light" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo Correo -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Correo"
+                app:startIconDrawable="@drawable/ic_email"
+                app:boxStrokeColor="@color/azul_principal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Et_correo_editar_empresa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/gris_texto"
+                    android:fontFamily="sans-serif-light" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Campo Teléfono -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Teléfono"
+                app:startIconDrawable="@drawable/ic_telefono"
+                app:boxStrokeColor="@color/azul_principal">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Et_editar_telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textColor="@color/gris_texto"
+                    android:fontFamily="sans-serif-light" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Botón Guardar -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Btn_editar_empresa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Guardar Cambios"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textColor="@color/blanco"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/boton_editar_empresa"
+                app:cornerRadius="20dp"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
