@@ -5,197 +5,162 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_formulario"
+    android:background="@drawable/fondo_gradiente_moderno"
     tools:context=".Administrador.RegistrarUsuario">
 
-    <!-- Onda superior -->
-    <ImageView
-        android:id="@+id/waveTop"
+    <!-- Contenedor con CardView -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/formCard"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/wave_top" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        android:background="@android:color/white">
 
-
-    <!-- Imagen Flecha -->
-
-
-    <!-- Toolbar -->
-    <RelativeLayout
-        android:id="@+id/toolbarRLAdminR"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:id="@+id/toolbarTituloR"
-            android:text="Registrar usuario"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <View
-            android:layout_alignParentBottom="true"
-            android:background="#80FFFFFF"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-
-    </RelativeLayout>
-
-    <!-- Contenido scrollable -->
-
-    <!-- Onda inferior -->
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbarRLAdminR"
-        android:layout_marginTop="63dp"
-        android:layout_marginBottom="60dp"
-        android:padding="20dp">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="#F9F9F9"
-            android:clipToOutline="true"
-            android:elevation="6dp"
-            android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Nombre -->
-            <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp">
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/Et_nombres_admin"
+                <!-- Imagen -->
+                <ImageView
+                    android:id="@+id/imgEmpresa"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_person" />
+
+                <!-- Título -->
+                <TextView
+                    android:id="@+id/toolbarTituloR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Registrar Usuario"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Nombre -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName|textCapWords"
-                    android:textColor="#212121"
-                    android:textColorHint="#757575" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="20dp"
+                    android:hint="Nombre"
+                    app:startIconDrawable="@drawable/ic_person">
 
-            <!-- Email -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Correo electrónico"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp">
+                    <EditText
+                        android:id="@+id/Et_nombres_admin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName|textCapWords"
+                        android:textColor="#212121"
+                        android:textColorHint="#757575" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/Et_email_admin"
+                <!-- Correo electrónico -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:textColor="#212121"
-                    android:textColorHint="#757575" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="12dp"
+                    android:hint="Correo electrónico"
+                    app:startIconDrawable="@drawable/ic_correo">
 
-            <!-- Rol -->
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Rol"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp">
+                    <EditText
+                        android:id="@+id/Et_email_admin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:textColor="#212121"
+                        android:textColorHint="#757575" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView"
+                <!-- Rol -->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:textColor="#212121"
-                    android:textColorHint="#757575" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="12dp"
+                    android:hint="Rol"
+                    app:startIconDrawable="@drawable/ic_rol">
 
-            <!-- Contraseña -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Contraseña"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp"
-                app:passwordToggleEnabled="true">
+                    <AutoCompleteTextView
+                        android:id="@+id/autoCompleteTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:textColor="#212121"
+                        android:textColorHint="#757575" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/Et_password_admin"
+                <!-- Contraseña -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:textColor="#212121"
-                    android:textColorHint="#757575" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="12dp"
+                    android:hint="Contraseña"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@drawable/ic_password">
 
-            <!-- Repetir Contraseña -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:hint="Repita la contraseña"
-                app:boxCornerRadiusBottomEnd="12dp"
-                app:boxCornerRadiusBottomStart="12dp"
-                app:boxCornerRadiusTopEnd="12dp"
-                app:boxCornerRadiusTopStart="12dp"
-                app:passwordToggleEnabled="true">
+                    <EditText
+                        android:id="@+id/Et_password_admin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="#212121"
+                        android:textColorHint="#757575" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
-                    android:id="@+id/Et_R_password_admin"
+                <!-- Repetir Contraseña -->
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:textColor="#212121"
-                    android:textColorHint="#757575" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="12dp"
+                    android:hint="Repita la contraseña"
+                    app:passwordToggleEnabled="true"
+                    app:startIconDrawable="@drawable/ic_password">
 
-            <!-- Botón -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/Btn_registrar_admin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#1565C0"
-                android:text="Registrar"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                app:cornerRadius="12dp" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </ScrollView>
+                    <EditText
+                        android:id="@+id/Et_R_password_admin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:textColor="#212121"
+                        android:textColorHint="#757575" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-    <ImageView
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/wave_bottom" />
+                <!-- Botón -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/Btn_registrar_admin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#1565C0"
+                    android:text="Registrar"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    app:cornerRadius="12dp" />
 
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Botón volver -->
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="23dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="0dp"
         android:clickable="true"
         android:contentDescription="Regresar"
         android:focusable="true"
