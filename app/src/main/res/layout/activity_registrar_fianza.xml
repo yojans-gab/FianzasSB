@@ -176,7 +176,7 @@
                         android:padding="12dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Nombre del Proyecto -->
+                <!-- NOMBRE DEL PROYECTO  -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilNombreProyecto"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
