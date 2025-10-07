@@ -1,4 +1,4 @@
-package com.example.fianzas // Asegúrate de que el paquete sea el correcto
+package com.example.fianzas
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
-// import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-// import androidx.core.view.ViewCompat
-// import androidx.core.view.WindowInsetsCompat
 import com.example.fianzas.Administrador.MenuAdministrador
 import com.example.fianzas.Gestor.MenuGestor
 import com.example.fianzas.databinding.ActivityLoginBinding
@@ -19,6 +16,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.messaging.FirebaseMessaging
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 class Login : AppCompatActivity() {
 
@@ -26,7 +28,8 @@ class Login : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var progressDialog: ProgressDialog
 
-    // Definir constantes para los roles para evitar errores de tipeo
+    private val REQUEST_POST_NOTIFICATIONS = 101
+
     companion object {
         const val ROL_ADMINISTRADOR = "Administrador"
         const val ROL_GESTOR = "Gestor"
@@ -48,16 +51,15 @@ class Login : AppCompatActivity() {
             validarInformacion()
         }
 
+        comprobarSesionActiva()
     }
 
     private fun comprobarSesionActiva() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser != null) {
-            // Si ya hay sesión, intentar obtener el rol y redirigir
             obtenerRolYRedirigir(firebaseUser)
         }
     }
-
 
     private var email = ""
     private var password = ""
@@ -66,17 +68,20 @@ class Login : AppCompatActivity() {
         email = binding.EtEmailAdmin.text.toString().trim()
         password = binding.EtPasswordAdmin.text.toString().trim()
 
-        if (email.isEmpty()) {
-            binding.EtEmailAdmin.error = "Ingrese su email"
-            binding.EtEmailAdmin.requestFocus()
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.EtEmailAdmin.error = "Ingrese un email válido"
-            binding.EtEmailAdmin.requestFocus()
-        } else if (password.isEmpty()) {
-            binding.EtPasswordAdmin.error = "Ingrese su contraseña"
-            binding.EtPasswordAdmin.requestFocus()
-        } else {
-            loginUsuario()
+        when {
+            email.isEmpty() -> {
+                binding.EtEmailAdmin.error = "Ingrese su email"
+                binding.EtEmailAdmin.requestFocus()
+            }
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                binding.EtEmailAdmin.error = "Ingrese un email válido"
+                binding.EtEmailAdmin.requestFocus()
+            }
+            password.isEmpty() -> {
+                binding.EtPasswordAdmin.error = "Ingrese su contraseña"
+                binding.EtPasswordAdmin.requestFocus()
+            }
+            else -> loginUsuario()
         }
     }
 
@@ -85,19 +90,18 @@ class Login : AppCompatActivity() {
         progressDialog.show()
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
-            .addOnSuccessListener {authResult ->
+            .addOnSuccessListener { authResult ->
                 progressDialog.dismiss()
                 val firebaseUser = authResult.user
                 if (firebaseUser != null) {
                     obtenerRolYRedirigir(firebaseUser)
                 } else {
-                    // Esto no debería suceder si signInWithEmailAndPassword fue exitoso
                     Toast.makeText(this, "No se pudo obtener la información del usuario.", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { e ->
                 progressDialog.dismiss()
-                Toast.makeText(this, "No se pudo iniciar sesión debido a ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "No se pudo iniciar sesión: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -113,8 +117,7 @@ class Login : AppCompatActivity() {
                 progressDialog.dismiss()
                 if (snapshot.exists()) {
                     val rolUsuario = snapshot.child("rol").getValue(String::class.java)
-
-                    Log.d("Login", "Rol obtenido de DB: $rolUsuario") // Para depuración
+                    Log.d("Login", "Rol obtenido de DB: $rolUsuario")
 
                     when (rolUsuario) {
                         ROL_ADMINISTRADOR -> {
@@ -123,13 +126,30 @@ class Login : AppCompatActivity() {
                             finishAffinity()
                         }
                         ROL_GESTOR -> {
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                                if (ContextCompat.checkSelfPermission(
+                                        this@Login,
+                                        Manifest.permission.POST_NOTIFICATIONS
+                                    ) != PackageManager.PERMISSION_GRANTED
+                                ) {
+                                    ActivityCompat.requestPermissions(
+                                        this@Login,
+                                        arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                                        REQUEST_POST_NOTIFICATIONS
+                                    )
+                                } else {
+                                    subscribeUserToGestoresTopic()
+                                }
+                            } else {
+                                subscribeUserToGestoresTopic()
+                            }
+
                             Toast.makeText(this@Login, "Bienvenido Gestor", Toast.LENGTH_SHORT).show()
-                            startActivity(Intent(this@Login, MenuGestor::class.java)) // Cambia a tu Activity de Gestor
+                            startActivity(Intent(this@Login, MenuGestor::class.java))
                             finishAffinity()
                         }
                         else -> {
                             Toast.makeText(this@Login, "Rol de usuario no reconocido o no asignado.", Toast.LENGTH_LONG).show()
-                            // firebaseAuth.signOut()
                         }
                     }
                 } else {
@@ -144,5 +164,41 @@ class Login : AppCompatActivity() {
             }
         })
     }
-}
 
+    private fun subscribeUserToGestoresTopic() {
+        FirebaseMessaging.getInstance().subscribeToTopic("gestores")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("FCM", "Subscribed to topic 'gestores'")
+                } else {
+                    Log.w("FCM", "Failed to subscribe to 'gestores'", task.exception)
+                }
+            }
+    }
+
+    private fun unsubscribeUserFromGestoresTopic() {
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("gestores")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("FCM", "Unsubscribed from topic 'gestores'")
+                } else {
+                    Log.w("FCM", "Failed to unsubscribe from 'gestores'", task.exception)
+                }
+            }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == REQUEST_POST_NOTIFICATIONS) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                subscribeUserToGestoresTopic()
+            } else {
+                Toast.makeText(this, "Permiso de notificaciones denegado; no se recibirán alarmas.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+}

@@ -15,6 +15,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import android.util.Log
+import com.google.firebase.messaging.FirebaseMessaging
 
 class Splash : AppCompatActivity() {
 
@@ -25,6 +27,15 @@ class Splash : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         firebaseAuth = FirebaseAuth.getInstance()
         VerBienvenida()
+        FirebaseMessaging.getInstance().token
+            .addOnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.e("FCM_TOKEN", "Fetching FCM registration token failed", task.exception)
+                    return@addOnCompleteListener
+                }
+                val token = task.result
+                Log.d("FCM_TOKEN", "Token FCM: $token")
+            }
     }
 
     fun VerBienvenida() {

@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.fianzas.Administrador.RegistrarUsuario
 import com.example.fianzas.databinding.ActivityMainBinding
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +16,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                println("Fetching FCM registration token failed: ${task.exception}")
+                return@addOnCompleteListener
+            }
+            val token = task.result
+            println("Token FCM: $token")
+        }
 
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -25,3 +35,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
