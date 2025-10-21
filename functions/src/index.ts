@@ -1,4 +1,4 @@
-import * as admin from "firebase-admin";
+﻿import * as admin from "firebase-admin";
 import {onSchedule} from "firebase-functions/v2/scheduler";
 import * as logger from "firebase-functions/logger";
 
@@ -9,39 +9,37 @@ const DB_NODE = "Fianza";
 /**
  * Normaliza un epoch (segundos o milisegundos) a milisegundos.
  *
- * @param {unknown} value - valor numérico o string con epoch.
- * @return {number} epoch en milisegundos (0 si inválido).
+ * @param {unknown} value - valor numÃ©rico o string con epoch.
+ * @return {number} epoch en milisegundos (0 si invÃ¡lido).
  */
 function normalizeEpochToMs(value: unknown): number {
   if (value == null) return 0;
-  const n =
-    typeof value === "string" ? Number(value) : (value as number);
+  const n = typeof value === "string" ? Number(value) : (value as number);
   if (Number.isNaN(Number(n))) return 0;
-  // si parece estar en segundos (p.ej. < 1e12), convertir a ms
   return Number(n) < 1_000_000_000_000 ? Number(n) * 1000 : Number(n);
 }
 
 /**
- * Función programada: busca fianzas con estado "1" cuya
- * fechaNotificacion cae en el día actual y notifica.
- *
- * Envía un mensaje FCM al topic "gestores" y actualiza
- * estado = "2" para las fianzas notificadas.
+ * FunciÃ³n programada: busca fianzas con estado "1" cuya
+ * fechaNotificacion cae en el dÃ­a actual y notifica.
  */
 export const notificarFianzasPorVencer = onSchedule(
   {schedule: "0 9 * * *", timeZone: "America/Guatemala"},
   async (): Promise<void> => {
-    logger.info("Iniciando verificación de fianzas por vencer...");
+    logger.info("Iniciando verificaciÃ³n de fianzas por vencer...");
 
     const now = new Date();
     const startOfDay = new Date(
       now.getFullYear(),
       now.getMonth(),
       now.getDate(),
-      0, 0, 0, 0
+      0,
+      0,
+      0,
+      0
     ).getTime();
-    const endOfDay = startOfDay + 24 * 60 * 60 * 1000 - 1;
 
+    const endOfDay = startOfDay + 24 * 60 * 60 * 1000 - 1;
     const ref = admin.database().ref(DB_NODE);
 
     try {
@@ -79,22 +77,21 @@ export const notificarFianzasPorVencer = onSchedule(
 
       logger.info(`Se encontraron ${pendientes.length} fianza(s).`);
 
-      const titulo =
-        pendientes.length === 1 ? "Fianza por vencer" :
-          `${pendientes.length} fianzas por vencer`;
+      let titulo = "Fianza por vencer";
+      let cuerpo = "Hay varias fianzas prÃ³ximas a vencer. Revisa la app.";
 
-      const cuerpo =
-        pendientes.length === 1 ?
-          `Fianza: ${
-            (pendientes[0].datos.nombreProyecto as string) ||
-              (pendientes[0].datos.nog as string) ||
-              "Proyecto"
-          }` :
-          "Hay varias fianzas próximas a vencer. Revisa la app.";
+      if (pendientes.length === 1) {
+        const nombreProyecto =
+          (pendientes[0].datos.nombreProyecto as string) || "";
+        const nog = (pendientes[0].datos.nog as string) || "";
+        titulo = "Fianza por vencer";
+        cuerpo = `Fianza: ${nombreProyecto || nog || "Proyecto"}`;
+      }
 
       const message: admin.messaging.Message = {
         notification: {title: titulo, body: cuerpo},
         android: {
+          priority: "high",
           notification: {
             channelId: "fianzas_vencimiento",
             sound: "default",
@@ -107,14 +104,18 @@ export const notificarFianzasPorVencer = onSchedule(
         },
       };
 
-      const messageId = await admin.messaging().send(message);
-      logger.info("Notificación enviada. messageId:", messageId);
+      try {
+        const messageId = await admin.messaging().send(message);
+        logger.info("NotificaciÃ³n enviada. messageId:", messageId);
+      } catch (sendErr) {
+        logger.error("Error enviando FCM:", sendErr);
+      }
 
       await admin.database().ref().update(updates);
       logger.info("Estados actualizados a '2' para fianzas notificados.");
       return;
     } catch (err) {
-      logger.error("Error en función notificarFianzasPorVencer:", err);
+      logger.error("Error en funciÃ³n notificarFianzasPorVencer:", err);
       return;
     }
   }
