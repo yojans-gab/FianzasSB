@@ -9,4 +9,9 @@
         <item>Anticipo</item>
         <item>Cumplimiento de oferta</item>
     </string-array>
+
+    <string name="Menu_hoy">Recientes</string>
+    <string name="Menu_todas">Todas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

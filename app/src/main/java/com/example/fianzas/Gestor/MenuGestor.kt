@@ -7,10 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.fianzas.ListaFianzasActivity
 import com.example.fianzas.MainActivity
 import com.example.fianzas.R
 import com.example.fianzas.databinding.ActivityMenuGestorBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlin.jvm.java
 
 class MenuGestor : AppCompatActivity() {
 
@@ -37,6 +39,9 @@ class MenuGestor : AppCompatActivity() {
             startActivity(Intent(this, Fianzas::class.java))
         }
 
+        binding.cardNotificaciones.setOnClickListener {
+            startActivity(Intent(this, ListaFianzasActivity::class.java))
+        }
 
 
     }

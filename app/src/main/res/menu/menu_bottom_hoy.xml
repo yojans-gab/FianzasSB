@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Menu_hoy"
+        android:title="@string/Menu_hoy"
+        android:icon="@drawable/ic_today"/>
+
+    <item
+        android:id="@+id/Menu_todas"
+        android:title="@string/Menu_todas"
+        android:icon="@drawable/ic_calendario"/>
+</menu>
