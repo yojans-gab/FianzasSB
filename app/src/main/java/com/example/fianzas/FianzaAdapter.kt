@@ -9,10 +9,21 @@ import java.util.Date
 import java.util.Locale
 
 class FianzaAdapter(
-    private val fianzasList: ArrayList<Fianza>
+    private val fianzasList: ArrayList<Fianza>,
+    private val onItemClick: (Fianza) -> Unit // Lambda para manejar clics
 ) : RecyclerView.Adapter<FianzaAdapter.FianzaViewHolder>() {
 
-    inner class FianzaViewHolder(val binding: ItemFianzaBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class FianzaViewHolder(val binding: ItemFianzaBinding) : RecyclerView.ViewHolder(binding.root) {
+        // Bloque init para configurar el listener del clic
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClick(fianzasList[position])
+                }
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FianzaViewHolder {
         val binding = ItemFianzaBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,14 +34,18 @@ class FianzaAdapter(
         val fianza = fianzasList[position]
         val b = holder.binding
 
-        b.tvTipoFianzaItem.text = if (fianza.tipoFianza.isNotBlank()) fianza.tipoFianza else "Sin tipo"
-        b.tvNombreProyectoItem?.text = if (fianza.beneficiario.isNotBlank()) fianza.beneficiario else "Sin beneficiario"
-        // Si tu item_fianza tiene tvNombreProyecto o similar, usa ese id.
-        // Ejemplo (si existe):
-        // b.tvNombreProyectoItem.text = if (fianza.nombreProyecto.isNotBlank()) fianza.nombreProyecto else "Sin proyecto"
+        // --- CORRECCIÓN DE ERRORES ---
 
-        b.tvFechaVencimientoItem?.text = "Emisión: ${formatDate(fianza.fechaEmision)}"
-        b.tvFechaVencimientoItem?.text = "Vence: ${formatDate(fianza.fechaVencimiento)}"
+        // 1. Mostrar Tipo de Fianza (tu código estaba bien aquí)
+        b.tvTipoFianzaItem.text = fianza.tipoFianza?.takeIf { it.isNotEmpty() } ?: "Sin tipo"
+
+        // 2. CORREGIDO: Usar 'nombreProyecto' que sí existe en la clase Fianza
+        b.tvNombreProyectoItem.text = fianza.nombreProyecto?.takeIf { it.isNotEmpty() } ?: "Sin proyecto"
+
+        // 3. CORREGIDO: Mostrar la fecha de vencimiento correctamente.
+        // Si quieres mostrar ambas fechas, necesitas otro TextView en tu layout.
+        // Por ahora, mostramos la más importante: Vencimiento.
+        b.tvFechaVencimientoItem.text = "Vence: ${formatDate(fianza.fechaVencimiento)}"
     }
 
     override fun getItemCount(): Int = fianzasList.size

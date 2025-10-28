@@ -1,11 +1,13 @@
 package com.example.fianzas.Fragmentos_Fianzas
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fianzas.DatosFianza
 import com.example.fianzas.Fianza
 import com.example.fianzas.FianzaAdapter
 import com.example.fianzas.R
@@ -42,11 +44,21 @@ class Fragment_todas : Fragment() {
         binding.recyclerViewFianzas.layoutManager = LinearLayoutManager(context)
         binding.recyclerViewFianzas.setHasFixedSize(true)
 
-        fianzasArrayList = arrayListOf()
-        fianzaAdapter = FianzaAdapter(fianzasArrayList)
-        binding.recyclerViewFianzas.adapter = fianzaAdapter
 
-        // Obtener los datos de Firebase
+        fianzasArrayList = arrayListOf()
+
+// --- CAMBIO CLAVE: Inicialización del Adapter con el listener ---
+        fianzaAdapter = FianzaAdapter(fianzasArrayList) { fianzaSeleccionada ->
+            // Este bloque se ejecuta cuando se hace clic en un ítem
+            val intent = Intent(requireContext(), DatosFianza::class.java).apply {
+                // Ponemos el objeto completo de la fianza en el Intent
+                putExtra("FIANZA_SELECCIONADA", fianzaSeleccionada)
+            }
+            startActivity(intent)
+        }
+
+// El resto de tu código sigue igual
+        binding.recyclerViewFianzas.adapter = fianzaAdapter
         getFianzasData()
     }
 

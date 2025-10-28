@@ -1,5 +1,6 @@
 package com.example.fianzas.Fragmentos_Fianzas
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fianzas.DatosFianza
 import com.example.fianzas.Fianza
 import com.example.fianzas.FianzaAdapter
 import com.example.fianzas.databinding.FragmentRecientesBinding
@@ -44,10 +46,21 @@ class Fragment_recientes : Fragment() {
             binding.recyclerViewFianzasRecientes.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerViewFianzasRecientes.setHasFixedSize(true)
 
-            fianzasArrayList = arrayListOf()
-            fianzaAdapter = FianzaAdapter(fianzasArrayList)
-            binding.recyclerViewFianzasRecientes.adapter = fianzaAdapter
 
+            fianzasArrayList = arrayListOf()
+
+// --- CAMBIO CLAVE: Inicialización del Adapter con el listener ---
+            fianzaAdapter = FianzaAdapter(fianzasArrayList) { fianzaSeleccionada ->
+                // Este bloque se ejecuta cuando se hace clic en un ítem
+                val intent = Intent(requireContext(), DatosFianza::class.java).apply {
+                    // Ponemos el objeto completo de la fianza en el Intent
+                    putExtra("FIANZA_SELECCIONADA", fianzaSeleccionada)
+                }
+                startActivity(intent)
+            }
+
+// El resto de tu código sigue igual
+            binding.recyclerViewFianzasRecientes.adapter = fianzaAdapter
             getFianzasData()
         } catch (t: Throwable) {
             Log.e(TAG, "Error en onViewCreated: ${t.message}", t)
@@ -85,13 +98,18 @@ class Fragment_recientes : Fragment() {
                         fianzasArrayList.clear()
                         if (snapshot.exists()) {
                             for (child in snapshot.children) {
-                                val fianza = child.getValue(Fianza::class.java)
-                                if (fianza != null) {
-                                    // si quieres asignar id desde la key:
-                                    if (fianza.fianzaId.isBlank()) {
-                                        fianza.fianzaId = child.key ?: ""
-                                    }
-                                    fianzasArrayList.add(fianza)
+                                // 1. Deserializa el objeto Fianza desde Firebase
+                                val fianzaOriginal = child.getValue(Fianza::class.java)
+
+                                if (fianzaOriginal != null) {
+                                    // --- SOLUCIÓN A LOS TRES ERRORES ---
+                                    // 2. Crea una copia del objeto, pero asignando el 'id' desde la clave (key) de Firebase.
+                                    // Esto respeta la inmutabilidad ('val') y asegura que el 'id' no sea nulo.
+                                    val fianzaConId = fianzaOriginal.copy(id = child.key)
+
+                                    // 3. Añade el nuevo objeto (con el ID correcto) a la lista.
+                                    fianzasArrayList.add(fianzaConId)
+
                                 } else {
                                     Log.w(TAG, "Fianza nula en ${child.key}")
                                 }
