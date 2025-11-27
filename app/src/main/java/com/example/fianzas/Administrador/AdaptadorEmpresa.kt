@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fianzas.Gestor.ModeloEmpresas
+import com.example.fianzas.Administrador.ModeloEmpresas
 import com.example.fianzas.databinding.ItemEmpresasBinding
 import com.google.firebase.database.FirebaseDatabase
 
@@ -33,9 +33,14 @@ class AdaptadorEmpresa(
 
         // Click editar
         holder.binding.btnEditarEmpresa.setOnClickListener {
-            val intent = Intent(mContext, EditarEmpresa::class.java)
-            intent.putExtra("Empresa_Id", modelo.empresaId)
-            mContext.startActivity(intent)
+            val id = modelo.empresaId.trim()
+            if (id.isEmpty()) {
+                Toast.makeText(mContext, "ID de empresa no encontrado", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val i = Intent(mContext, EditarEmpresa::class.java)
+            i.putExtra("EMPRESA_ID", id) // <- MISMA CLAVE
+            mContext.startActivity(i)
         }
 
 
@@ -43,6 +48,7 @@ class AdaptadorEmpresa(
         holder.binding.btnEliminarEmpresa.setOnClickListener {
             confirmarEliminacionEmpresa(modelo)
         }
+
     }
 
     override fun getItemCount(): Int = empresaArrayList.size
@@ -67,10 +73,9 @@ class AdaptadorEmpresa(
             Toast.makeText(mContext, "ID de empresa no válido.", Toast.LENGTH_SHORT).show()
             return
         }
-
-        // Usa el mismo nombre de nodo que usas para listar (aquí 'Empresas')
-        val refEmpresa = FirebaseDatabase.getInstance().getReference("Empresas").child(idEmpresa)
-        refEmpresa.removeValue()
+        FirebaseDatabase.getInstance().getReference("Empresa")
+            .child(idEmpresa)
+            .removeValue()
             .addOnSuccessListener {
                 Toast.makeText(mContext, "Empresa '${modeloEmpresa.nombreEmpresa}' eliminada.", Toast.LENGTH_SHORT).show()
             }

@@ -13,6 +13,7 @@ import androidx.compose.ui.semantics.error
 import androidx.compose.ui.semantics.requestFocus
 import androidx.compose.ui.semantics.setText
 import androidx.compose.ui.semantics.text
+import com.example.fianzas.Administrador.ModeloEmpresas
 import com.example.fianzas.R
 import com.example.fianzas.databinding.ActivityRegistrarFianzaBinding
 import com.google.firebase.auth.FirebaseAuth

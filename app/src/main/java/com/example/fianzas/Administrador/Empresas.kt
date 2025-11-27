@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fianzas.Gestor.ModeloEmpresas
+import com.example.fianzas.Administrador.ModeloEmpresas
 import com.example.fianzas.databinding.ActivityEmpresasBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

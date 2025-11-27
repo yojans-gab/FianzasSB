@@ -17,10 +17,14 @@ data class Fianza(
     val nombreProyecto: String? = null,
     val tipoFianza: String? = null,
     val fechaVencimiento: Long = 0L,
-    val fechaEmision: Long = 0L
+    val fechaEmision: Long = 0L,
+    val monto: Double = 0.0,
+    val beneficiario: String? = null,
+    val fiador: String? = null
+
 ) : Serializable {
 
     // 2. CONSTRUCTOR VACÍO CORREGIDO
     // Debe coincidir con el número de parámetros del constructor principal (7 en este caso).
-    constructor() : this(null, null, null, null, null, 0L, 0L)
+    constructor() : this(null, null, null, null, null, 0L, 0L, 0.0, null, null)
 }

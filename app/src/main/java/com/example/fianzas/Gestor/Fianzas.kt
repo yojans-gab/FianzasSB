@@ -13,6 +13,7 @@ import androidx.compose.ui.semantics.setText
 import com.example.fianzas.R
 import com.example.fianzas.databinding.ActivityFianzasBinding
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fianzas.Administrador.ModeloEmpresas
 import com.example.fianzas.Gestor.ModeloFianza
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot

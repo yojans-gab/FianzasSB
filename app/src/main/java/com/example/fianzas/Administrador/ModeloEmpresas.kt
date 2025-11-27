@@ -1,4 +1,4 @@
-package com.example.fianzas.Gestor
+package com.example.fianzas.Administrador
 
 class ModeloEmpresas {
     var empresaId: String = ""

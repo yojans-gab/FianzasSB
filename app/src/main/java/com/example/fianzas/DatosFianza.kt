@@ -4,7 +4,8 @@ import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.semantics.text
+//import androidx.compose.ui.semantics.text
+//import androidx.compose.ui.semantics.text
 import java.util.Locale
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -12,7 +13,7 @@ import com.example.fianzas.databinding.ActivityDatosFianzaBinding
 import java.text.SimpleDateFormat
 import kotlin.text.format
 import java.util.Date
-
+import java.text.NumberFormat
 
 
 class DatosFianza : AppCompatActivity() {
@@ -33,12 +34,22 @@ class DatosFianza : AppCompatActivity() {
 
         // Si la fianza no es nula, poblamos las vistas
         fianza?.let {
+
+            val formatoMoneda = NumberFormat.getCurrencyInstance(Locale("es", "GT"))
+
             binding.tvDetalleNombreProyecto.text = it.nombreProyecto ?: "No disponible"
             binding.tvDetalleTipoFianza.text = it.tipoFianza ?: "No disponible"
             binding.tvDetalleNog.text = "NOG: ${it.nog ?: "N/A"}"
-            binding.tvDetalleEstado.text = "Estado: ${it.estado ?: "N/A"}"
+            binding.tvDetalleEstado.text = when(it.estado) {
+                "1" -> "Estado: Por notificar"
+                "2" -> "Estado: Notificada"
+                else -> "Estado: N/A"
+            }
             binding.tvDetalleFechaEmision.text = "Fecha de Emisión: ${formatDate(it.fechaEmision)}"
             binding.tvDetalleFechaVencimiento.text = "Fecha de Vencimiento: ${formatDate(it.fechaVencimiento)}"
+            binding.TvMontoFianza.text = formatoMoneda.format(it.monto)
+            binding.TvBeneficiarioFianza.text = it.beneficiario ?: "No especificado"
+            binding.TvFiadorFianza.text = it.fiador ?: "No especificado"
         }
     }
 
