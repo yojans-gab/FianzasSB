@@ -31,14 +31,25 @@
             android:padding="28dp">
 
             <!-- Icono de Empresa -->
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivIconoEmpresa"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/ic_empresa"
                 android:background="@drawable/fondo_icono_circular"
-                android:padding="16dp"
-                android:layout_marginBottom="16dp" />
+                android:padding="2dp"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="16dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/azul_principal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toca para cambiar la foto"
+                android:textSize="12sp"
+                android:layout_marginBottom="16dp"/>
 
             <!-- Título -->
             <TextView

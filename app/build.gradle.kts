@@ -57,4 +57,6 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.database)
     implementation(libs.firebase.auth)
+    implementation("com.google.firebase:firebase-storage-ktx:20.3.0") // O la versión que uses de BOM
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }

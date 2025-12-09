@@ -7,7 +7,7 @@
     </string-array>
     <string-array name="TiposFianza">
         <item>Anticipo</item>
-        <item>Cumplimiento de obra</item>
+        <item>Cumplimiento de Contrato</item>
         <item>Endosos de Aclaracion</item>
         <item>Endosos de Prorroga</item>
     </string-array>

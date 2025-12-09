@@ -31,14 +31,15 @@
             android:padding="28dp">
 
             <!-- Icono de Empresa -->
+
             <ImageView
-                android:id="@+id/ivIconoEmpresa"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:src="@drawable/ic_empresa"
-                android:background="@drawable/fondo_icono_circular"
-                android:padding="16dp"
-                android:layout_marginBottom="16dp" />
+                android:id="@+id/IvLogoEmpresa"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_launcher_background"
+                android:scaleType="centerCrop"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"/>
 
             <!-- Título -->
             <TextView

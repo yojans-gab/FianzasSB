@@ -4,7 +4,8 @@ class ModeloEmpresas {
     var empresaId: String = ""
     var nombreEmpresa: String = ""
     var nombreDueno: String = ""
-    var urlLogoEmpresa: String = "" // URL para la imagen del logo
+    // Firebase buscará "urlLogoEmpresa" en la base de datos para llenar esto
+    var urlLogoEmpresa: String = ""
 
     constructor() // Constructor vacío para Firebase
 
